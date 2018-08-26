@@ -36,7 +36,7 @@ public class GuideActivity extends BaseActivity implements ViewPager.OnPageChang
     }
 
     private void initDots() {
-        mDotLayout = findViewById(R.id.dots);
+        mDotLayout = (LinearLayout) findViewById(R.id.dots);
         mDots = new ImageView[guideViews.size()];
         for (int i=0;i<mDotLayout.getChildCount();i++){
             mDots[i] = (ImageView) mDotLayout.getChildAt(i);
@@ -104,7 +104,7 @@ public class GuideActivity extends BaseActivity implements ViewPager.OnPageChang
                     container.addView(viewList.get(position));
 
                     if (position == viewList.size()-1){
-                        ImageView imageView = viewList.get(position).findViewById(R.id.ic_start);
+                        ImageView imageView = (ImageView) viewList.get(position).findViewById(R.id.ic_start);
                         imageView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

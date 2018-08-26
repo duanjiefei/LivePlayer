@@ -3,8 +3,10 @@ package com.duanjiefei.github.liveplayer.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.support.v7.widget.Toolbar;
+
+import com.duanjiefei.github.liveplayer.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -26,7 +28,16 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract int  getLayoutID();
 
-    public void setSupportActionBar() {
-        //mToolbar = findViewById()
+    protected void setSupportActionBar() {
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (mToolbar!=null){
+            setSupportActionBar(mToolbar);
+        }
+    }
+
+    protected void setActionBarIcon(int resID){
+        if (mToolbar!=null){
+            mToolbar.setNavigationIcon(resID);
+        }
     }
 }
