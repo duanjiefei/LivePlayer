@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <item type="id" name="ScrollAdapterViewChild" />
+    <item type="id" name="imageDownloadTask" />
+
+    <item type="id" name="ShadowView" />
+    <item type="id" name="ShadowedView" />
+
+    <item type="id" name="ControllerTagId" />
+    <item type="id" name="LoaderTagId" />
+</resources>

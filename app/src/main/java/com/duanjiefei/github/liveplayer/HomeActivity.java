@@ -1,10 +1,12 @@
 package com.duanjiefei.github.liveplayer;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.MenuItem;
 
 import com.duanjiefei.github.liveplayer.base.BaseActivity;
 
@@ -40,5 +42,24 @@ public class HomeActivity extends BaseActivity {
         mActionBarDrawerToggle =  new ActionBarDrawerToggle(this,mDrawerLayout,mToolbar,R.string.drawer_open,R.string.drawer_close);
         mActionBarDrawerToggle.syncState();
         mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
+
+        handelNavigationView();
+    }
+
+    private void handelNavigationView() {
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.navigation_item_video:
+                        break;
+                    case R.id.navigation_item_blog:
+                        break;
+                    case R.id.navigation_item_about:
+                        break;
+                }
+                return false;
+            }
+        });
     }
 }
