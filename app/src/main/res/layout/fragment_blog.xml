@@ -2,10 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:text="@string/fragment_blog"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
+  <ProgressBar
+      android:id="@+id/progressbar"
+      style="?android:progressBarStyleHorizontal"
+      android:max="100"
+      android:indeterminateDrawable="@drawable/progress_bar_drawable"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/dimen_8dp" />
+  <WebView
+      android:id="@+id/webView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"></WebView>
 
 </LinearLayout>

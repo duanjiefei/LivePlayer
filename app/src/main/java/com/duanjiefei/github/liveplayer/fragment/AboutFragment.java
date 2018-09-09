@@ -4,6 +4,7 @@ import com.duanjiefei.github.liveplayer.R;
 
 public class AboutFragment extends BaseFragment {
 
+
     @Override
     protected int getLayoutID() {
         return R.layout.fragment_about;
@@ -11,6 +12,7 @@ public class AboutFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+
     }
 
     @Override
