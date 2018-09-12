@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:text="@string/fragment_home"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+ <FrameLayout
+     android:layout_width="match_parent"
+     android:layout_height="@dimen/dimen_360dp"
+     android:layout_margin="@dimen/dimen_8dp">
+
+     <com.hejunlin.superindicatorlibray.LoopViewPager
+         android:id="@+id/looperviewpager"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"/>
+     
+     <FrameLayout
+         android:layout_gravity="bottom|right"
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/dimen_48dp">
+         
+         <com.hejunlin.superindicatorlibray.CircleIndicator
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:id="@+id/indicator"
+             android:orientation="horizontal"
+             android:layout_gravity="right"
+             android:layout_marginBottom="@dimen/dimen_2dp"
+             android:layout_marginEnd="@dimen/dimen_5dp"/>
+     </FrameLayout>
+
+ </FrameLayout>
 
 </LinearLayout>
