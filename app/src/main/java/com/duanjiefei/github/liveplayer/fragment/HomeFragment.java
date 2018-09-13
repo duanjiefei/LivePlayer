@@ -3,6 +3,7 @@ package com.duanjiefei.github.liveplayer.fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -10,6 +11,10 @@ import android.widget.TextView;
 
 import com.duanjiefei.github.liveplayer.R;
 import com.duanjiefei.github.liveplayer.adapter.HomePicAdapter;
+import com.duanjiefei.github.liveplayer.detail.DetailActivity;
+import com.duanjiefei.github.liveplayer.favourite.FavouriteActivity;
+import com.duanjiefei.github.liveplayer.history.HistoryActivity;
+import com.duanjiefei.github.liveplayer.live.LiveActivity;
 import com.duanjiefei.github.liveplayer.model.Channel;
 import com.hejunlin.superindicatorlibray.CircleIndicator;
 import com.hejunlin.superindicatorlibray.LoopViewPager;
@@ -35,6 +40,25 @@ public class HomeFragment extends BaseFragment {
         mIndicator.setViewPager(mLoopViewPager);
         mGridView = bindViewID(R.id.gridView);
         mGridView.setAdapter(new ChannelAdapter());
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                switch (position){
+                    case 6://直播
+                        LiveActivity.launch(getActivity());
+                        break;
+                    case 7://喜爱
+                        FavouriteActivity.launch(getActivity());
+                        break;
+                    case 8://历史
+                        HistoryActivity.launch(getActivity());
+                        break;
+                    default:
+                        DetailActivity.launch(getActivity(),position+1);//position == channelID
+                        break;
+                }
+            }
+        });
     }
 
     @Override
