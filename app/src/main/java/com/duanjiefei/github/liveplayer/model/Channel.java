@@ -57,11 +57,11 @@ public class Channel implements Serializable{
     }
 
 
-    private int getChannelID(){
+    public int getChannelID(){
         return channleNo;
     }
 
-    private String getChannelName(){
+    public String getChannelName(){
         return channelName;
     }
 

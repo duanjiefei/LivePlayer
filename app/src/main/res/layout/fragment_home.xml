@@ -30,4 +30,15 @@
 
  </FrameLayout>
 
+
+        <GridView
+            android:id="@+id/gridView"
+            android:numColumns="3"
+            android:verticalSpacing="@dimen/dimen_40dp"
+            android:horizontalSpacing="@dimen/dimen_8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </GridView>
+
+
 </LinearLayout>
