@@ -1,18 +1,28 @@
 package com.duanjiefei.github.liveplayer.detail;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 
 import com.duanjiefei.github.liveplayer.R;
 import com.duanjiefei.github.liveplayer.base.BaseActivity;
 import com.duanjiefei.github.liveplayer.model.Channel;
+import com.duanjiefei.github.liveplayer.model.Site;
+
+import java.util.HashMap;
 
 public class DetailActivity extends BaseActivity{
 
     private static final String CHANNEL_ID = "channelID";
 
-    private int channelID = 0;
+    private int mChannelID = 0;
+    private ViewPager viewPager;
 
 
     @Override
@@ -24,12 +34,54 @@ public class DetailActivity extends BaseActivity{
     protected void initView() {
         Intent intent = getIntent();
         if (intent!=null){
-            channelID = intent.getIntExtra(CHANNEL_ID,0);
+            mChannelID = intent.getIntExtra(CHANNEL_ID,0);
         }
-        Channel channel = new Channel(channelID,this);
+        Channel channel = new Channel(mChannelID,this);
         setSupportActionBar();
         setSupportArrowActionBar(true);//支持返回箭头的图标
         setTitle(channel.getChannelName());
+
+        viewPager  = bindViewID(R.id.pager_detail);
+        viewPager.setAdapter(new SitePagerAdapter(getSupportFragmentManager(),this,mChannelID));
+
+    }
+
+     class  SitePagerAdapter extends FragmentPagerAdapter{
+        private  Context mContext;
+        private  int ChannelID;
+        private HashMap<Integer,DetailListFragment> mPagerMap;
+
+        public SitePagerAdapter(FragmentManager fm, Context context,int channelID) {
+            super(fm);
+            ChannelID = channelID;
+            mContext = context;
+            mPagerMap = new HashMap<>();
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            Object obj =  super.instantiateItem(container, position);
+            if (obj instanceof  DetailListFragment){
+                mPagerMap.put(position, (DetailListFragment) obj);
+            }
+            return obj;
+        }
+
+         @Override
+         public void destroyItem(ViewGroup container, int position, Object object) {
+             super.destroyItem(container, position, object);
+             mPagerMap.remove(position);
+         }
+
+         @Override
+         public int getCount() {
+             return Site.MAX_COUNT;
+         }
+
+         @Override
+        public Fragment getItem(int position) {
+            return DetailListFragment.newInstance(new Site(1).getSiteID(),ChannelID);
+        }
     }
 
 

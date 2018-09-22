@@ -1,8 +1,9 @@
 package com.duanjiefei.github.liveplayer.model;
 
 public class Site {
-    private static final int SOHU = 1;
-    private static final int LETV = 2;
+    private static final int SOHU = 2;
+    private static final int LETV = 1;
+    public  static final int MAX_COUNT = 2;
 
     private int siteID =1;
     private String siteName = "";
@@ -17,7 +18,7 @@ public class Site {
                 siteName = "搜狐视频";
                 break;
             case LETV:
-                siteName = "乐死视频";
+                siteName = "乐视视频";
                 break;
         }
     }
