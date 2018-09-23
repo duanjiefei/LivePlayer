@@ -1,8 +1,8 @@
 package com.duanjiefei.github.liveplayer.model;
 
 public class Site {
-    private static final int SOHU = 2;
-    private static final int LETV = 1;
+    public static final int SOHU = 1;
+    public static final int LETV = 2;
     public  static final int MAX_COUNT = 2;
 
     private int siteID =1;

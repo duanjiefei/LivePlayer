@@ -2,6 +2,7 @@ package com.duanjiefei.github.liveplayer.application;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
@@ -18,9 +19,9 @@ public class AppManager  extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
+        gson = new Gson();
         httpClient = new OkHttpClient();
         mContext = this;
-        gson = new Gson();
     }
 
     public static OkHttpClient getHttpClient() {
@@ -29,6 +30,10 @@ public class AppManager  extends Application{
 
     public static Gson getGson() {
         return gson;
+    }
+
+    public static Resources getResource(){
+        return mContext.getResources();
     }
 
     /**

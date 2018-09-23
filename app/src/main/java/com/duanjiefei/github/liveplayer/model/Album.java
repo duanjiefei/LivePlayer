@@ -3,7 +3,23 @@ package com.duanjiefei.github.liveplayer.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.duanjiefei.github.liveplayer.application.AppManager;
+
 public class Album implements Parcelable{
+
+    private String albumId;//专辑id
+    private int videoTotal;//集数
+    private String title;//专辑名称
+    private String subTitle;//专辑子标题
+    private String director;//导演
+    private String mainActor;//主演
+    private String verImgUrl;//专辑竖图
+    private String horImgUrl;//专辑横图
+    private String albumDesc;//专辑描述
+    private Site site;//网站
+    private String tip;//提示
+    private boolean isCompleted;//专辑是否更新完
+    private String letvStyle;//乐视特殊字段
 
 
     public String getAlbumId() {
@@ -110,21 +126,6 @@ public class Album implements Parcelable{
         this.letvStyle = letvStyle;
     }
 
-    private String albumId;//专辑id
-    private int videoTotal;//集数
-    private String title;//专辑名称
-    private String subTitle;//专辑子标题
-    private String director;//导演
-    private String mainActor;//主演
-    private String verImgUrl;//专辑竖图
-    private String horImgUrl;//专辑横图
-    private String albumDesc;//专辑描述
-    private Site site;//网站
-    private String tip;//提示
-    private boolean isCompleted;//专辑是否更新完
-    private String letvStyle;//乐视特殊字段
-
-
 
     public static final Parcelable.Creator<Album> CREATOR = new Creator<Album>() {
         @Override
@@ -199,5 +200,13 @@ public class Album implements Parcelable{
                 ", isCompleted=" + isCompleted +
                 ", letvStyle='" + letvStyle + '\'' +
                 '}';
+    }
+
+    public String toJsonString(){
+        return AppManager.getGson().toJson(this);
+    }
+
+    public Album fromGson(String JsonString){
+        return AppManager.getGson().fromJson(JsonString,Album.class);
     }
 }
